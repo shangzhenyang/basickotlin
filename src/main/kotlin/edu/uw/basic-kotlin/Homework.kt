@@ -60,6 +60,17 @@ class Person(firstName: String, lastName: String, age: Int) {
 class Money(amount: Int, currency: String) {
     val amount: Int = amount
     val currency: String = currency
+    init {
+        if (amount < 0) {
+            throw IllegalArgumentException("Negative amount not allowed")
+        }
+        when (currency) {
+            "USD", "EUR", "CAN", "GBP" -> {}
+            else -> {
+                throw IllegalArgumentException("Unsupported currency")
+            }
+        }
+    }
     fun convert(targetCurrency: String): Money {
         var usd: Int = amount
         when (currency) {

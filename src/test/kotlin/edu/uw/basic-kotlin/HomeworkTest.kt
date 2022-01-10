@@ -81,11 +81,11 @@ class HomeworkTest {
     // =================
     // Money tests
     @Test fun Money_sanityTests() {
-        val negEx = assertThrows(IllegalArgumentException::class.java) {
+        val negEx = assertFailsWith(IllegalArgumentException::class) {
             Money(-5, "USD")
         }
 
-        val currEx = assertThrows(IllegalArgumentException::class.java) {
+        val currEx = assertFailsWith(IllegalArgumentException::class) {
             Money(10, "YEN")
         }
     }
